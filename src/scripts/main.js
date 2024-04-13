@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const options = { controls: true, autoplay: false, preload: 'auto' };
 
     input.addEventListener('keyup', onInput);
-    input.value = 'https://amchls.wns.live/hls/stream.m3u8';
+    input.value = 'https://cdnamd-hls-globecast.akamaized.net/live/ramdisk/arriadia/hls_snrt/arriadia-avc1_1500000=4-mp4a_130400_qad=1.m3u8';
 
     const player = videojs('player', options);
     return [player, input];
