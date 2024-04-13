@@ -1,12 +1,38 @@
 window.addEventListener('DOMContentLoaded', () => {
-  const url = "https://amchls.wns.live/hls/stream.m3u8";
-  const video = document.getElementById('player');
-  const source = document.createElement('source');
-  const options = {};
+  const [player, input] = initPlayer();
+  loadVideo(input.value);
 
-  source.src = url;
-  source.type = "application/x-mpegURL";
+  function initPlayer() {
+    const input = document.getElementById('url-input');
+    const options = { controls: true, autoplay: false, preload: 'auto' };
 
-  video.appendChild(source);
-  videojs('player', options);
+    input.addEventListener('keyup', onInput);
+    input.value = 'https://amchls.wns.live/hls/stream.m3u8';
+
+    const player = videojs('player', options);
+    return [player, input];
+  }
+
+  function loadVideo(url) {
+    player.src({ src: url, type: 'application/x-mpegURL' });
+    player.play();
+  }
+
+  function onInput(e) {
+    const url = e.target.value.trim();
+
+    if (isValidUrl(url)) {
+      loadVideo(url);
+    }
+  }
+
+  function isValidUrl(url) {
+    try {
+      return Boolean(new URL(url));
+    }
+
+    catch (e) {
+      return false;
+    }
+  }
 });
