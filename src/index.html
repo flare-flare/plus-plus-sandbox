@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="./node_modules/skeleton-css/css/skeleton.css">
   <link href="./node_modules/video.js/dist/video-js.min.css" rel="stylesheet" />
 
-  <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href="./styles/main.css">
   <link rel="shortcut icon" href="./assets/logo.png">
 
   <title>Plus+ Sandbox</title>
@@ -36,19 +36,5 @@
 
   <script src="./node_modules/hls.js/dist/hls.min.js"></script>
   <script src="./node_modules/video.js/dist/video.min.js"></script>
-
-  <script>
-    const url = "https://amchls.wns.live/hls/stream.m3u8";
-    const video = document.getElementById('player');
-    const source = document.createElement('source');
-    const options = {};
-
-    source.src = url;
-    source.type = "application/x-mpegURL";
-
-    video.appendChild(source);
-
-    const player = videojs('player');
-    player.play();
-  </script>
+  <script src="./scripts/main.js"></script>
 </body>

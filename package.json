@@ -4,8 +4,9 @@
   "description": "Plus+ Sandbox",
   "main": "server.js",
   "scripts": {
+    "start:server": "node server.js",
     "start:client": "pnpx http-server .",
-    "start:server": "node server.js"
+    "postinstall": "./scripts/package.sh"
   },
   "keywords": [
     "iptv"
