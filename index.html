@@ -1,0 +1,36 @@
+<head>
+  <link href="./node_modules/video.js/dist/video-js.min.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="./assets/Artboard 1 1.png">
+
+  <title>Plus+ Sandbox</title>
+</head>
+
+<body>
+  <h1>Plus+ Sandbox</h1>
+  <video id="my-video" class="video-js" controls preload="auto" width="640" height="264"
+    poster="./assets/Artboard 1 1.png">
+
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+    </p>
+  </video>
+
+  <script src="./node_modules/hls.js/dist/hls.min.js"></script>
+  <script src="./node_modules/video.js/dist/video.min.js"></script>
+
+  <script>
+    const url = "https://amchls.wns.live/hls/stream.m3u8";
+    const video = document.getElementById('my-video');
+    const source = document.createElement('source');
+    const options = {};
+
+    source.src = url;
+    source.type = "application/x-mpegURL";
+
+    video.appendChild(source);
+
+    const player = videojs('my-video');
+    player.play();
+  </script>
+</body>

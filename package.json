@@ -1,0 +1,21 @@
+{
+  "name": "plus-plus-sandbox",
+  "version": "0.0.1",
+  "description": "Plus+ Sandbox",
+  "main": "server.js",
+  "scripts": {
+    "start:client": "http-server .",
+    "start:server": "node server.js"
+  },
+  "keywords": [
+    "iptv"
+  ],
+  "author": "eoussama",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "hls.js": "^1.5.8",
+    "request": "^2.88.2",
+    "video.js": "^8.10.0"
+  }
+}
