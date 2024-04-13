@@ -1,0 +1,17 @@
+.content {
+  margin-top: 50px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.input {
+  width: 100%;
+  max-width: 500px;
+}
+
+.centered {
+  margin: 0 auto;
+  text-align: center;
+}

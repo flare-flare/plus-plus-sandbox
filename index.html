@@ -1,27 +1,45 @@
-<head>
+<!DOCTYPE html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="./node_modules/skeleton-css/css/normalize.css">
+  <link rel="stylesheet" href="./node_modules/skeleton-css/css/skeleton.css">
   <link href="./node_modules/video.js/dist/video-js.min.css" rel="stylesheet" />
-  <link rel="shortcut icon" href="./assets/Artboard 1 1.png">
+
+  <link rel="stylesheet" href="./main.css">
+  <link rel="shortcut icon" href="./assets/logo.png">
 
   <title>Plus+ Sandbox</title>
 </head>
 
 <body>
-  <h1>Plus+ Sandbox</h1>
-  <video id="my-video" class="video-js" controls preload="auto" width="640" height="264"
-    poster="./assets/Artboard 1 1.png">
+  <main class="container">
+    <h1 class="title centered">Plus+ Sandbox</h1>
 
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a
-      web browser that <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-    </p>
-  </video>
+    <div class="content">
+      <div class="input">
+        <input id="url-input" class="u-full-width" type="url" placeholder="Paste a valid stream URL here...">
+      </div>
+
+      <video id="player" class="video-js centered" controls preload="auto" width="640" height=" 480"
+        poster="./assets/logo.png">
+
+        <p class="vjs-no-js">
+          To view this video please enable JavaScript, and consider upgrading to a
+          web browser that <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+      </video>
+    </div>
+  </main>
 
   <script src="./node_modules/hls.js/dist/hls.min.js"></script>
   <script src="./node_modules/video.js/dist/video.min.js"></script>
 
   <script>
     const url = "https://amchls.wns.live/hls/stream.m3u8";
-    const video = document.getElementById('my-video');
+    const video = document.getElementById('player');
     const source = document.createElement('source');
     const options = {};
 
@@ -30,7 +48,7 @@
 
     video.appendChild(source);
 
-    const player = videojs('my-video');
+    const player = videojs('player');
     player.play();
   </script>
 </body>
