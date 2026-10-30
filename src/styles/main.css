@@ -49,6 +49,20 @@
   background: #f0f0f0;
 }
 
+#channels li.blocked {
+  opacity: 0.45;
+}
+
+.status {
+  margin: 0.5rem 0 0;
+  color: #b45309;
+  font-size: 1.3rem;
+}
+
+.status[hidden] {
+  display: none;
+}
+
 #channels li.note {
   color: #888;
   font-size: 1.3rem;

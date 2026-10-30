@@ -7,12 +7,20 @@ await customElements.whenDefined('hlsjs-video');
 const input = document.getElementById('url-input');
 const list = document.getElementById('channels');
 const player = document.getElementById('player');
+const status = document.getElementById('status');
+
+// Browsers refuse to load http:// media from an https:// page.
+const secure = location.protocol === 'https:';
+const BLOCKED = 'Browsers block http:// streams on https:// pages. This one only plays when the page is served over http (e.g. localhost).';
+const FAILED = 'This stream could not be loaded. It may be offline, or it may not allow requests from other sites (CORS). Some streams only play when the page runs locally.';
 
 let currentUrl;
 let channels = [];
 let loading = true;
 let active = -1;
 
+player.addEventListener('error', onPlayerError);
+player.addEventListener('playing', () => setStatus(''));
 input.addEventListener('input', onInput);
 input.addEventListener('focus', openList);
 input.addEventListener('click', openList);
@@ -97,7 +105,8 @@ function renderList(filter = '') {
     country.textContent = channel.country;
     item.role = 'option';
     item.append(channel.name, country);
-    item.title = channel.url;
+    item.title = isBlocked(channel.url) ? `${channel.url}\n${BLOCKED}` : channel.url;
+    item.classList.toggle('blocked', isBlocked(channel.url));
     item.dataset.url = channel.url;
     item.ariaSelected = String(channel.url === currentUrl);
     return item;
@@ -205,6 +214,23 @@ function loadVideo(url) {
   // calling `play()` here would be interrupted by the load `src` kicks off.
   currentUrl = url;
   player.src = url;
+  setStatus(isBlocked(url) ? BLOCKED : '');
+}
+
+function isBlocked(url) {
+  return secure && url.startsWith('http:');
+}
+
+function setStatus(message) {
+  status.textContent = message;
+  status.hidden = !message;
+}
+
+function onPlayerError() {
+  // A blocked http:// stream already has its own, more specific message.
+  if (!isBlocked(currentUrl)) {
+    setStatus(FAILED);
+  }
 }
 
 function onInput(e) {
