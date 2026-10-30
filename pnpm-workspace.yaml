@@ -1,0 +1,6 @@
+# Fail instead of silently switching when the running pnpm isn't the pinned one.
+pmOnFail: error
+engineStrict: true
+
+allowBuilds:
+  esbuild: true

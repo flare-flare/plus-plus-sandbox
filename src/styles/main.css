@@ -7,8 +7,67 @@
 }
 
 .input {
+  position: relative;
   width: 100%;
   max-width: 500px;
+}
+
+#channels {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  max-height: 300px;
+  margin: -1rem 0 0;
+  overflow-y: auto;
+  list-style: none;
+  background: #fff;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#channels[hidden] {
+  display: none;
+}
+
+#channels li {
+  margin: 0;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+}
+
+#channels li small {
+  margin-left: 0.6rem;
+  color: #888;
+  text-transform: uppercase;
+}
+
+#channels li:hover,
+#channels li.active {
+  background: #f0f0f0;
+}
+
+#channels li.note {
+  color: #888;
+  font-size: 1.3rem;
+  cursor: default;
+}
+
+#channels li.note:hover {
+  background: none;
+}
+
+#channels li[aria-selected="true"] {
+  font-weight: 600;
+}
+
+.player {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  aspect-ratio: 4 / 3;
 }
 
 .centered {

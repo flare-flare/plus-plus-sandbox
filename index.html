@@ -1,15 +1,18 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<head lang="en">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="./src/vendor/skeleton.css/normalize.css">
   <link rel="stylesheet" href="./src/vendor/skeleton.css/skeleton.css">
-  <link rel="stylesheet" href="./src/vendor/video.js/video.min.css" />
 
   <link rel="stylesheet" href="./src/styles/main.css">
-  <link rel="shortcut icon" href="./src/assets/logo.png">
+  <link rel="icon" href="./src/assets/logo.png">
+
+  <script type="module" src="./src/vendor/video.js/video.min.js"></script>
+  <script type="module" src="./src/scripts/main.js"></script>
 
   <title>Plus+ Sandbox</title>
 </head>
@@ -20,20 +23,20 @@
 
     <div class="content">
       <div class="input">
-        <input id="url-input" class="u-full-width" type="url" placeholder="Paste a valid stream URL here...">
+        <input id="url-input" class="u-full-width" type="url" autocomplete="off" role="combobox"
+          aria-controls="channels" placeholder="Paste a stream URL or pick a channel...">
+        <ul id="channels" role="listbox" hidden></ul>
       </div>
 
-      <video id="player" class="video-js centered" width="640" height=" 480" poster="./src/assets/logo.png">
+      <video-player poster="./src/assets/logo.png">
+        <video-skin class="player">
+          <hlsjs-video id="player" preload="auto" autoplay playsinline></hlsjs-video>
+        </video-skin>
+      </video-player>
 
-        <p class="vjs-no-js">
-          To view this video please enable JavaScript, and consider upgrading to a
-          web browser that <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-        </p>
-      </video>
+      <noscript>To view this video please enable JavaScript.</noscript>
     </div>
   </main>
-
-  <script src="./src/vendor/hls.js/hls.min.js"></script>
-  <script src="./src/vendor/video.js/video.min.js"></script>
-  <script src="./src/scripts/main.js"></script>
 </body>
+
+</html>
