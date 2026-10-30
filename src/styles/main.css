@@ -54,7 +54,8 @@
 }
 
 .status {
-  margin: 0.5rem 0 0;
+  /* Pull it up against the input, whose own bottom margin is 1.5rem. */
+  margin: -1.1rem 0 2rem;
   color: #b45309;
   font-size: 1.3rem;
 }
