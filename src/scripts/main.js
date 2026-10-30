@@ -1,4 +1,4 @@
-const DEFAULT_URL = 'http://185.9.2.18/chid_205/index.m3u8';
+const DEFAULT_URL = 'https://live-hls-apps-ajd-fa.getaj.net/AJD/index.m3u8';
 const PLAYLIST_URL = 'https://iptv-org.github.io/iptv/index.m3u';
 const MAX_SHOWN = 100;
 
